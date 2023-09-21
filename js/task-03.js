@@ -12,3 +12,19 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+/*Напиши скрипт для створення галереї зображень на підставі масиву даних. 
+HTML містить список ul.gallery*/
+
+const galleryEl = document.querySelector('.gallery');
+
+const imagesEl = images.map(image => {
+  const galleryLi = document.createElement('li');
+  galleryLi.insertAdjacentHTML('beforeend', '<img/>');
+  galleryLi.firstChild.src = image.url;
+  galleryLi.firstChild.alt = image.alt;
+  galleryLi.firstChild.classList = 'gallery__image';
+
+  return galleryLi;
+});
+galleryEl.append(...imagesEl);
