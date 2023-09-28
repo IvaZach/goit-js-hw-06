@@ -10,10 +10,10 @@ data-length.
 
 const textEl = document.querySelector('#validation-input');
 
-textEl.addEventListener('input', textInputed);
+textEl.addEventListener('blur', textInputed);
 
 function textInputed() {
-  if (textEl.selectionEnd <= Number(textEl.dataset.length)) {
+  if (textEl.selectionEnd === Number(textEl.dataset.length)) {
     textEl.classList.add('valid');
     textEl.classList.remove('invalid');
   } else {

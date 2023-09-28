@@ -17,14 +17,12 @@ const images = [
 HTML містить список ul.gallery*/
 
 const galleryEl = document.querySelector('.gallery');
+galleryEl.style = `display: flex; flex-wrap: wrap; gap: 30px;`;
 
-const imagesEl = images.map(image => {
-  const galleryLi = document.createElement('li');
-  galleryLi.insertAdjacentHTML('beforeend', '<img/>');
-  galleryLi.firstChild.src = image.url;
-  galleryLi.firstChild.alt = image.alt;
-  galleryLi.firstChild.classList = 'gallery__image';
+const imagesEl = images
+  .map(({ url, alt }) => {
+    return `<li><img src = '${url}' alt = '${alt}' width = '400'/></li>`;
+  })
+  .join('');
 
-  return galleryLi;
-});
-galleryEl.append(...imagesEl);
+galleryEl.insertAdjacentHTML('beforeend', imagesEl);
